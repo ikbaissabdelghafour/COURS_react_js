@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Increment from './TP_STATE/increment';
 import Pere from './usestate/TP1/pere';
-ReactDOM.createRoot(document.getElementById('root')).render(<Pere message="bonjour mon fils"/>)
+import App from './usestate/exercice/App';
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
  
 
 // If you want to start measuring performance in your app, pass a function
