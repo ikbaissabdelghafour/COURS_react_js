@@ -1,6 +1,7 @@
-import React from 'react'
+import React  from 'react'
 
 function Display({table,onupdate,ondelete}) {
+   
   return (
     <table align='center' border={1} cellSpacing={0} cellPadding={20} width={1000}>
     <thead>
@@ -19,7 +20,7 @@ function Display({table,onupdate,ondelete}) {
                    <td> {ele.nom} </td>
                    <td> {ele.prenom} </td>
                    <td> <button onClick={()=>onupdate(ele.id)} >Editer</button> </td>
-                   <td> <button onClick={()=>ondelete(ele.id)} >Supprimer</button> </td>
+                   <td> <button onClick={(()=>ondelete(ele.id))} >Supprimer</button> </td>
                </tr>
         ))
         }
