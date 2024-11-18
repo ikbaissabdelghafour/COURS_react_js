@@ -6,7 +6,7 @@ super(props)
 this.state={nom:'ahmadi',prenom:'aicha'}
 }
 f1(){
-    return(this.setState={nom:props.nom,prenom:props.prenom})
+    return(this.setState={nom:this.props.nom,prenom:this.props.prenom})
     }
   render() {
           return (
