@@ -32,7 +32,7 @@ function App() {
         </fieldset>
         <fieldset>
             <legend>Editer</legend>
-            <Edite  obj_edit={new_object_updat}  current_obj={for_update} />
+            <Edite  obj_edit={new_object_updat}  current_obj={for_update}  />
         </fieldset>
         </>
 

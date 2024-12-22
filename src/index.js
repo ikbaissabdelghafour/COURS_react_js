@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 // import Increment from './TP_STATE/increment';
 // import Pere from './usestate/TP1/pere';
 // import App from './usestate/exercice/App';
-import App from  './Activite11/App'
+// import APP from './Api/App';
+// import APP from './Revision_2_cc/APP'
+// import App from './bootstrap/App';
+// import App from './Api/App';
+import App from './Routers/App';
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
  
 
