@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom/client';
 // import APP from './Revision_2_cc/APP'
 // import App from './bootstrap/App';
 // import App from './Api/App';
-import App from './Routers/App';
+import App from './Tp_de_routage/App';
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
  
 
