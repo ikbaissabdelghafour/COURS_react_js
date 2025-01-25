@@ -3,11 +3,11 @@ import Display from './display'
 import Creat from './Creat'
 import Edite from './edite'
 function App() {
-    const list=[
+    const list = [
         {id:1,nom:"ikbaiss",prenom:"abdelghafour"},
         {id:2,nom:"elkassmi",prenom:"Hamza"},
         {id:3,nom:"ouadi",prenom:"mouad"}
-    ]
+        ]
     const [data,setData]=useState(list)
     const [for_update,setFor_udapte]=useState({})
     const get_delete_id=(id)=>(setData(data.filter((ele)=>!(ele.id===id))))
