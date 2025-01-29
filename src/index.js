@@ -9,7 +9,12 @@ import ReactDOM from 'react-dom/client';
 // import App from './Tp_de_revision/App';
 // import Increment from './TP_STATE/increment';
 // import App from './useRef/useRef/App';
-import App from './Hook/CustomHooK/App';
+// import App from './Hook/CustomHooK/App';
+// ------------------------------------------------------------------------
+// import App from './Redux_Exercices/Counter/App';
+// import App from './Redux_Exercices/CRUD/App/App';
+import App from './calculatrice_Redux/App/App';
+// ------------------------------------------------------------------------
 // import Pere from './usestate/TP1/pere';
 // import App from './usestate/exercice/App';
 // import APP from './Api/App';
