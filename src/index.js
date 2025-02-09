@@ -1,6 +1,7 @@
 import React  from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { Provider } from 'react-redux';
+import { store } from './Revesion_CC3/Redux/Store';
 
 // import { Provider } from 'react-redux';
 // import store from './Redux/Store';
@@ -13,7 +14,8 @@ import ReactDOM from 'react-dom/client';
 // ------------------------------------------------------------------------
 // import App from './Redux_Exercices/Counter/App';
 // import App from './Redux_Exercices/CRUD/App/App';
-import App from './calculatrice_Redux/App/App';
+// import App from './calculatrice_Redux/App/App';
+import App from './Revesion_CC3/App/Client';
 // ------------------------------------------------------------------------
 // import Pere from './usestate/TP1/pere';
 // import App from './usestate/exercice/App';
@@ -22,9 +24,9 @@ import App from './calculatrice_Redux/App/App';
 // import App from './bootstrap/App';
 // import App from './Api/App';
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <>
+  <Provider store={store}>
   <App/>
-  </>
+  </Provider>
 
 )
  
