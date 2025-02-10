@@ -1,5 +1,4 @@
-import { act } from 'react'
-import {ADDCLI , DELETECLI , UPDATECLI , EDITCLI , initialiseState1} from './Action'
+import {ADDCLI , DELETECLI , UPDATECLI , EDITCLI , initialiseState1 , ADDCOM , DELETECOM , EDITCOM, UPDATECOM} from './Action'
 
 export const reducerclient  = ( state={table:[],show:{}} , action )=>{
 switch(action.type){
@@ -18,10 +17,22 @@ switch(action.type){
 
 }
 }
-
-// export const reducercommand = (state={table:[],} , action)=>{
-//     switch(action.type){
-//         case 
-//     }
-// }
-
+const initialiseState2={
+    commande:[],
+    com:{}
+}
+export const reducercommand = (state=initialiseState2 , action)=>{
+    switch(action.type){
+        case ADDCOM:
+            return {...state , commande:[...state.commande , action.payload]}
+        case DELETECOM:
+            return {...state , commande:[...state.commande.filter((ele)=>ele.numero!=action.payload)]}        
+        case UPDATECOM:
+                return {...state,commande:[...state.commande.filter((ele)=>!(ele.numero==action.payload.numero))  ,action.payload]}
+        case EDITCOM :
+            return {...state,com:state.commande.find(ele=>ele.numero==action.payload)}
+        default:
+            return state
+                
+            }
+        }

@@ -10,7 +10,8 @@ useEffect(() => {
     .then(response=>response.json())
     .then(res=>dispatch(INITIALEVALUE(res)))
 },[])
-const clients = useSelector(state=>state)
+const clients = useSelector(state=>state.clients)
+const commandes= useSelector(state=>state.commandes)
 const [id, setid] = useState(0)
 const [userId, setuserid] = useState('')
 const [obj, setobj] = useState({})
@@ -19,18 +20,21 @@ const [title, setTitle] = useState('')
 const [body, setBody] = useState('')
 const [affich,setAffich]=useState("none")
 const [categore , setCategorie] = useState('0')
+// -----------------Action for edit commandes-----------------
 useEffect(() => {
     setuserid(clients.show.userId)
     setTitle(clients.show.title)
     setBody(clients.show.body)
 },[clients.show])
+// -----------------Action for Ctegores-----------------
 useEffect(() => {
 if(categore=="0"){
     setLastvalue(clients.table)
 }else{
     setLastvalue(clients.table.filter(ele=>ele.userId==categore))
 }
-},[categore])
+},[categore,clients.table])
+// -----------------Action for edit commandes-----------------
 const handeledit = (id)=>{
     dispatch(editcli(id))
     setAffich("inline")
@@ -40,6 +44,7 @@ const handeledit = (id)=>{
     setTitle(clients.show.title)
     setBody(clients.show.body)
 }
+// -----------------Action for update commandes-----------------
 const handupdate = ()=>{
 dispatch(updatecli({userId:userId,id:id,title:title,body:body}))
 setAffich("none")
@@ -47,6 +52,15 @@ setuserid('')
 setTitle('')
 setBody('')
 setid()
+}
+// -----------------Action for delete commandes-----------------
+const handedelete = (id)=>{
+    const detect = commandes.commande.filter((ele)=>(ele.client==id))
+    if(detect.length==0){
+        dispatch(deletecli(id))
+    }else{
+        alert('can not delete this client ! ')
+    }
 }
 return(
 <>
@@ -78,7 +92,7 @@ return(
             <th>{ele.id}</th>
             <th>{ele.title}</th>
             <th>{ele.body}</th>
-            <th> <button onClick={()=>dispatch(deletecli(ele.id))} >Supprimer</button> </th>
+            <th> <button onClick={()=>handedelete(ele.id)} >Supprimer</button> </th>
             <th> <button onClick={()=>handeledit(ele.id)} >Edite</button> </th>
             </tr>
         )}

@@ -22,7 +22,7 @@ export const EDITCOM= "EDITCOM";
 
 export const addcom = (obj) => ({type:ADDCOM,payload:obj})
 export const updatecom = (obj) => ({type:UPDATECOM, payload:obj})
-export const editcom = (id) => ({type:DELETECOM,payload:id})
+export const editcom = (id) => ({type:EDITCOM,payload:id})
 export const deletecom = (id) => ({type:DELETECOM,payload:id})
 
 

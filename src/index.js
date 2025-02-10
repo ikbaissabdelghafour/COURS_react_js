@@ -15,7 +15,7 @@ import { store } from './Revesion_CC3/Redux/Store';
 // import App from './Redux_Exercices/Counter/App';
 // import App from './Redux_Exercices/CRUD/App/App';
 // import App from './calculatrice_Redux/App/App';
-import App from './Revesion_CC3/App/Client';
+import App from './Revesion_CC3/App/App';
 // ------------------------------------------------------------------------
 // import Pere from './usestate/TP1/pere';
 // import App from './usestate/exercice/App';
