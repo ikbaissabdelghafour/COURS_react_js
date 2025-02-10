@@ -14,7 +14,6 @@ const clients = useSelector(state=>state.clients)
 const commandes= useSelector(state=>state.commandes)
 const [id, setid] = useState(0)
 const [userId, setuserid] = useState('')
-const [obj, setobj] = useState({})
 const [lastvalue, setLastvalue]=useState([])
 const [title, setTitle] = useState('')
 const [body, setBody] = useState('')
@@ -38,7 +37,6 @@ if(categore=="0"){
 const handeledit = (id)=>{
     dispatch(editcli(id))
     setAffich("inline")
-    setobj(clients.show)
     setid(clients.show.id)
     setuserid(clients.show.userId)
     setTitle(clients.show.title)
@@ -68,7 +66,7 @@ return(
       <input type="number" value={userId} onChange={e=>setuserid(e.target.value)} />
       <input type="text"   value={title} onChange={e=>setTitle(e.target.value)} />
       <input type="text"   value={body} onChange={e=>setBody(e.target.value)} />
-      <button onClick={()=>dispatch(addcli({userId,id:Date.now(),title, body}))} > Ajouter </button>
+      <button onClick={()=>dispatch(addcli({userId,id:+clients.table.at(-1).id+1,title, body}))} > Ajouter </button>
       <button onClick={handupdate} style={{ display:affich }}>Update</button>
     </form>
 <select name="" id="" onChange={e=>setCategorie(e.target.value)}>
