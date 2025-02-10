@@ -34,50 +34,98 @@ function Command() {
         setDate('');
         setAffich('none')
      }
-  return (
-        <>
-    <form onSubmit={e=>e.preventDefault()}>
-        <input type="date"   value={date}   onChange={e=>setDate(e.target.value)}id="" placeholder='' />
-        <input type="number" min={0} value={total} onChange={e=>setTotale(e.target.value)}id="" placeholder='' />
-        <select onChange={e=>setClient(e.target.value)} value={client} >
-    <option value="">selection un client</option>
-     {clients.table.map(ele=> <option value={ele.id} key={ele.id}> {ele.id}</option>)}
-        </select>
-        <button onClick={handelajoute} >Ajouter </button>
-        <button onClick={handelupdate} style={{ display:affich }} >UPDATE </button>
-    </form>
+return (
+    <>
+        <form onSubmit={e => e.preventDefault()} className="mb-4">
+            <div className="form-group">
+                <label htmlFor="date">Date</label>
+                <input
+                    type="date"
+                    value={date}
+                    onChange={e => setDate(e.target.value)}
+                    id="date"
+                    className="form-control"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="total">Total</label>
+                <input
+                    type="number"
+                    min={0}
+                    value={total}
+                    onChange={e => setTotale(e.target.value)}
+                    id="total"
+                    className="form-control"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="client">Client</label>
+                <select
+                    onChange={e => setClient(e.target.value)}
+                    value={client}
+                    id="client"
+                    className="form-control"
+                >
+                    <option value="">Select a client</option>
+                    {clients.table.map(ele => (
+                        <option value={ele.id} key={ele.id}>
+                            {ele.id}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <button onClick={handelajoute} className="btn btn-primary mr-2">
+                Add
+            </button>
+            <button
+                onClick={handelupdate}
+                style={{ display: affich }}
+                className="btn btn-secondary"
+            >
+                Update
+            </button>
+        </form>
 
-
-
-    <table border={1} >
-        <thead >
-            <tr>
-                <th>numero</th>
-                <th>date</th>
-                <th>total</th>
-                <th>client</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        {
-            commandes.commande.map((ele,i)=>
-            <tr key={i} >
-                <td>{ele.numero}</td>
-                <td>{ele.date}</td>
-                <td>{ele.total}</td>
-                <td>{ele.client}</td>
-                <td>
-                    <button onClick={()=>{dispatch(editcom(ele.numero)) ; setAffich("inline")}} >Edit</button>
-                    <button onClick={()=>dispatch(deletecom(ele.numero))} >Delete</button>
-                </td>
-            </tr>
-            )
-        }
-        </tbody>
-    </table>
+        <table className="table table-bordered">
+            <thead className="thead-dark">
+                <tr>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Client</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {commandes.commande.map((ele, i) => (
+                    <tr key={i}>
+                        <td>{ele.numero}</td>
+                        <td>{ele.date}</td>
+                        <td>{ele.total}</td>
+                        <td>{ele.client}</td>
+                        <td>
+                            <button
+                                onClick={() => {
+                                    dispatch(editcom(ele.numero));
+                                    setAffich("inline");
+                                }}
+                                className="btn btn-warning mr-2"
+                            >
+                                Edit
+                            </button>
+                            <button
+                                onClick={() => dispatch(deletecom(ele.numero))}
+                                className="btn btn-danger"
+                            >
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     </>
-  )
+)
 }
 
 export default Command

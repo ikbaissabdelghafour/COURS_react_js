@@ -1,8 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import Display from './display'
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.min.js"
+  import "bootstrap/dist/css/bootstrap.min.css"
+  import "bootstrap/dist/js/bootstrap.min.js"
 import {store} from"../Redux/Store"
 import { BrowserRouter , Link, Route,Routes  } from 'react-router-dom'
 import Show from './Show'

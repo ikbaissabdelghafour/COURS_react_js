@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { INITIALEVALUE ,deletecli,ADDCLI,updatecli,editcli, addcli} from '../Redux/Action';
 import {useDispatch , useSelector} from 'react-redux';
-
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.min.js"
 export default function Client(){
 
 const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const [affich,setAffich]=useState("none")
 const [categore , setCategorie] = useState('0')
 // -----------------Action for edit commandes-----------------
 useEffect(() => {
+    setid(clients.show.id)
     setuserid(clients.show.userId)
     setTitle(clients.show.title)
     setBody(clients.show.body)
@@ -37,10 +39,6 @@ if(categore=="0"){
 const handeledit = (id)=>{
     dispatch(editcli(id))
     setAffich("inline")
-    setid(clients.show.id)
-    setuserid(clients.show.userId)
-    setTitle(clients.show.title)
-    setBody(clients.show.body)
 }
 // -----------------Action for update commandes-----------------
 const handupdate = ()=>{
@@ -53,50 +51,66 @@ setid()
 }
 // -----------------Action for delete commandes-----------------
 const handedelete = (id)=>{
-    const detect = commandes.commande.filter((ele)=>(ele.client==id))
+    const detect = commandes.commande.find((ele)=>(ele.client==id))
     if(detect.length==0){
         dispatch(deletecli(id))
-    }else{
-        alert('can not delete this client ! ')
+    }else{        
     }
 }
 return(
 <>
-<form onSubmit={e=>e.preventDefault()}>
-      <input type="number" value={userId} onChange={e=>setuserid(e.target.value)} />
-      <input type="text"   value={title} onChange={e=>setTitle(e.target.value)} />
-      <input type="text"   value={body} onChange={e=>setBody(e.target.value)} />
-      <button onClick={()=>dispatch(addcli({userId,id:+clients.table.at(-1).id+1,title, body}))} > Ajouter </button>
-      <button onClick={handupdate} style={{ display:affich }}>Update</button>
-    </form>
-<select name="" id="" onChange={e=>setCategorie(e.target.value)}>
-  <option value="">selectioner un categore</option>
-    <option value="0">Tout</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
-
-    <table border={1}>
+<form onSubmit={e=>e.preventDefault()} className="mb-3">
+    <div className="mb-3">
+        <label htmlFor="userId" className="form-label">User ID</label>
+        <input type="number" className="form-control" id="userId" value={userId} onChange={e=>setuserid(e.target.value)} />
+    </div>
+    <div className="mb-3">
+        <label htmlFor="title" className="form-label">Title</label>
+        <input type="text" className="form-control" id="title" value={title} onChange={e=>setTitle(e.target.value)} />
+    </div>
+    <div className="mb-3">
+        <label htmlFor="body" className="form-label">Body</label>
+        <input type="text" className="form-control" id="body" value={body} onChange={e=>setBody(e.target.value)} />
+    </div>
+    <button className="btn btn-primary me-2" onClick={()=>dispatch(addcli({userId,id:Date.now(),title, body}))}>Ajouter</button>
+    <button className="btn btn-secondary" onClick={handupdate} style={{ display:affich }}>Update</button>
+</form>
+<div className="mb-3">
+    <label htmlFor="categorie" className="form-label">Categorie</label>
+    <select className="form-select" id="categorie" onChange={e=>setCategorie(e.target.value)}>
+        <option value="">Selectioner un categore</option>
+        <option value="0">Tout</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</div>
+<table className="table table-bordered">
+    <thead>
         <tr>
-            <th>userid</th>
-            <th>id</th>
-            <th>title</th>
+            <th>User ID</th>
+            <th>ID</th>
+            <th>Title</th>
             <th>Body</th>
-            <th>Action  </th>
+            <th>Action</th>
         </tr>
-        { lastvalue.map((ele,i)=> <tr key={i}>
-            <th>{ele.userId}</th>
-            <th>{ele.id}</th>
-            <th>{ele.title}</th>
-            <th>{ele.body}</th>
-            <th> <button onClick={()=>handedelete(ele.id)} >Supprimer</button> </th>
-            <th> <button onClick={()=>handeledit(ele.id)} >Edite</button> </th>
+    </thead>
+    <tbody>
+        {lastvalue.map((ele, i) => (
+            <tr key={i}>
+                <td>{ele.userId}</td>
+                <td>{ele.id}</td>
+                <td>{ele.title}</td>
+                <td>{ele.body}</td>
+                <td>
+                    <button className="btn btn-danger me-2" onClick={() => handedelete(ele.id)}>Supprimer</button>
+                    <button className="btn btn-warning" onClick={() => handeledit(ele.id)}>Edite</button>
+                </td>
             </tr>
-        )}
-        
-    </table>
-        </>
+        ))}
+    </tbody>
+</table>
+</>
 )
 
 }
