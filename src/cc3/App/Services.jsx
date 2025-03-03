@@ -2,6 +2,7 @@ import React,{useState, useEffect } from 'react'
 import {useSelector , useDispatch} from 'react-redux'
 import { ajouterService , modiferService , supprimerService , editerService  } from '../Redux/Action'
  
+// ------------------------ Services.jsx ------------------------
 
 function Services() {
     
@@ -54,8 +55,8 @@ const handelsup=(srvc)=>{
                     <td>{ele.nbr_emp}</td>
                     <td>{ele.budget}</td>
                     <td>
-                        <button onClick={_=>dispatch(editerService(ele.numero))} >Editer</button>
-                        <button onClick={_=>handelsup(ele)} >Supprimer</button>
+                        <button onClick={()=>dispatch(editerService(ele.numero))} >Editer</button>
+                        <button onClick={()=>handelsup(ele)} >Supprimer</button>
                     </td>
                 </tr>
                 )}

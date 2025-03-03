@@ -1,3 +1,5 @@
+// -------------------------------------------- Services Actions --------------------------------------------
+
 export const ADDSERV = "ADDSERV"
 export const SUPSERV = "SUPSERV"
 export const EDITSERV = "EDITSERV"
@@ -12,6 +14,7 @@ export const modiferService=(newservice)=>({type:MODIFSERV,payload:newservice})
 export const modifer_Nb_Employee=(numero_service,pas)=>({type:UPDNBEMPL,payload:{service_num:numero_service,pas:pas}})
 export const modife_budget=(numero_service,pas)=>({type:UPDBUDGET,payload:{service_num:numero_service,pas:pas}})
 
+// -------------------------------------------- Employer Actions --------------------------------------------
 
 export const ADDEMPL="ADDEMPL"
 export const EDITEMPL="EDITEMPL"

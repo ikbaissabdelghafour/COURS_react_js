@@ -2,6 +2,7 @@ import React ,{useState , useEffect} from 'react'
 import { ajouterEmplyer,modiferEmployer,supprimerEmplyer,filterEmployer,EditerEmplyer,modife_budget , modifer_Nb_Employee } from '../Redux/Action'
 import { useDispatch, useSelector } from 'react-redux'
 
+// ------------------------ Employer.jsx ------------------------
 function Employer() {
 const [id , setId] = useState()
 const [nom , setNom] = useState()
@@ -34,10 +35,6 @@ useEffect(()=>{
     setService(Employer.emp.service)
     setSalaire(Employer.emp.salaire)
 },[Employer.emp])
-console.log(filter_)
-console.log(Employer)
-
-
   return (
     <>
     <form onSubmit={e=>e.preventDefault()}>
@@ -51,10 +48,8 @@ console.log(Employer)
             <option value={ele.numero} key={i}> {ele.nom} </option>
             )}
         </select>
-        <button onClick={_=>handeldata("ajouter")} >Ajouter</button>
-        <button onClick={_=>handeldata("modifer")} >Modifer</button>
-
-
+        <button onClick={()=>handeldata("ajouter")} >Ajouter</button>
+        <button onClick={()=>handeldata("modifer")} >Modifer</button>
     </form>
       <table  border={1}>
         <thead>
@@ -76,8 +71,8 @@ console.log(Employer)
                 <td> {ele.salaire} </td>
                 <td> {ele.service} </td>
                 <td> 
-                <button onClick={_=>{dispatch(supprimerEmplyer(ele.id));dispatch(modife_budget(ele.service,  +ele.salaire));dispatch(modifer_Nb_Employee(service,-1))}} >Supprimer</button>
-                <button onClick={_=>dispatch(EditerEmplyer(ele.id))} >Editer </button>
+                <button onClick={()=>{dispatch(supprimerEmplyer(ele.id));dispatch(modife_budget(ele.service,  +ele.salaire));dispatch(modifer_Nb_Employee(service,-1))}} >Supprimer</button>
+                <button onClick={()=>dispatch(EditerEmplyer(ele.id))} >Editer </button>
 
                 </td>
             </tr>
@@ -90,7 +85,7 @@ console.log(Employer)
             <option value={ele.numero} key={i}> {ele.nom} </option>
             )}
     </select>  
-    <button onClick={_=>dispatch(filterEmployer(filter_))} > Filter</button> 
+    <button onClick={()=>dispatch(filterEmployer(filter_))} > Filter</button> 
 
       <table  border={1}>
         <thead>

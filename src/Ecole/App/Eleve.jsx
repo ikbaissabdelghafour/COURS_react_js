@@ -17,7 +17,6 @@ function Eleve() {
       setId(eleves.eleve.id);
 
    },[eleves.eleve])
-   console.log(eleves)
   return (
     <>
     <form onSubmit={e=>e.preventDefault()}>

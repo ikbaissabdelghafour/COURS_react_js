@@ -22,6 +22,7 @@ const f2=(mess2)=>{setMessagedP2(mess2);
         setId(id+1)
         setAllmessage([...allmessage,{id:id, message:mess2,text :"les message envoyer par P2 est "} ])
       }
+      
 const delet=(id)=>{setAllmessage(allmessage.filter(ele=>ele.id!==id))}
   return (
     <>

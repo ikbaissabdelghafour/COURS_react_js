@@ -13,7 +13,6 @@ function Classes() {
       setDate(classes.cla.date);
       setNom(classes.cla.nom);
       setId(classes.cla.id);
-
    },[classes.cla])
   return (
     <>

@@ -5,8 +5,8 @@ const initialState = {
 const reduce = (state = initialState, action) => {
   switch (action.payload.type) {
 
-  case typeName:
-    return { ...state, ...payload }
+  case action.type:
+    return { ...state, ...action.payload }
 
   default:
     return state
